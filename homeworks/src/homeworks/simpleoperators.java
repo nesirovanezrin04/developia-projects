@@ -1,6 +1,6 @@
 package homeworks;
 
-public class simpleoperators {
+public class SimpleOperators {
 	public static void main(String[] args) {
 		for (int n = 1; n <= 5; n++) { // 1
 			System.out.println(n);
