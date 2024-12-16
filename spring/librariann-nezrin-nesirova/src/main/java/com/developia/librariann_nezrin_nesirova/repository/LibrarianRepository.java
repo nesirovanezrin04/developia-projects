@@ -6,4 +6,6 @@ import com.developia.librariann_nezrin_nesirova.entity.LibrarianEntity;
 
 public interface LibrarianRepository extends JpaRepository<LibrarianEntity, Integer> {
 
+	LibrarianEntity findByUsername(String username);
+
 }

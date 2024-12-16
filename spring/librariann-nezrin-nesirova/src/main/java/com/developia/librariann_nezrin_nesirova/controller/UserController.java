@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.developia.librariann_nezrin_nesirova.exception.MyException;
 import com.developia.librariann_nezrin_nesirova.request.LibrarianAddRequest;
+import com.developia.librariann_nezrin_nesirova.service.UserService;
+
 import jakarta.validation.Valid;
 
 @RestController
@@ -20,12 +22,12 @@ import jakarta.validation.Valid;
 public class UserController {
 
 	@Autowired
-	private com.developia.librariann_nezrin_nesirova.service.UserService service;
+	private UserService service;
 
 	// api web api veb servis
-	@PostMapping(path = "/librarians")
+	@PostMapping(path = "/librarian")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public String addSeller(@Valid @RequestBody LibrarianAddRequest req, BindingResult br) {
+	public String addLibrarian(@Valid @RequestBody LibrarianAddRequest req, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new MyException("nese var", br);
 		}

@@ -26,7 +26,7 @@ public class UserService {
 		user.setPassword("{noop}" + req.getPassword());
 		user.setEnabled(1);
 		repository.save(user);
-		authorityService.addSellerAuthorities(req.getUsername());
+		authorityService.addLibrarianAuthorities(req.getUsername());
 		LibrarianService.add(req);
 	}
 	

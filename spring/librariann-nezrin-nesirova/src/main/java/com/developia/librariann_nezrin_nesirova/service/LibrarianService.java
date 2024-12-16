@@ -3,6 +3,7 @@ package com.developia.librariann_nezrin_nesirova.service;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.developia.librariann_nezrin_nesirova.entity.LibrarianEntity;
@@ -27,5 +28,16 @@ public class LibrarianService {
 		repository.save(librarian);
 
 	}
+
+	public Integer findIdByUsername() {
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		LibrarianEntity librarian = repository.findByUsername(username);
+		Integer id = librarian.getId();
+		return id;
+
+	}
+	
+
+
 
 }

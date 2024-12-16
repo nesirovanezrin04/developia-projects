@@ -6,18 +6,16 @@ values
 ('1984', 105, '1949-06-08', '2024-10-11 12:13:14', 328, 2);
 
 insert into librarians
-(name,surname,phone,email,address,username,register_date)
+(name, surname, phone, email, address, username, register_date)
 values
 ('Ali', 'Mammadov', '0501234567', 'ali.mammadov@library.az', 'Baku', 'ali_mammadov', '2024-10-11 12:13:14'),
-('Aysel', 'Aliyeva', '0516547890', 'aysel.aliyeva@library.az', 'Baku', 'aysel_aliyeva', '2024-10-11 12:13:14'),
-
+('Aysel', 'Aliyeva', '0516547890', 'aysel.aliyeva@library.az', 'Baku', 'aysel_aliyeva', '2024-10-11 12:13:14');
 
 insert into students
-(name,surname,phone,email,address,username,register_date)
+(name, surname, phone, email, address, username, register_date)
 values
 ('Elvin', 'Mammadov', '0501234567', 'elvin.mammadov@student.az', 'Baku', 'elvin_mammadov', '2024-10-11 12:13:14'),
 ('Narmin', 'Aliyeva', '0559876543', 'narmin.aliyeva@student.az', 'Baku', 'narmin_aliyeva', '2024-10-11 12:13:14');
-
 
 insert into users
 (username,password,enabled) 
@@ -28,7 +26,7 @@ values
 ('narmin_aliyeva','{noop}1234',1);
 
 insert into authority_list
-(authority,seller,customer)
+(authority,librarian,student)
 values
 ('ROLE_ADD_BOOK',1,0),
 ('ROLE_GET_BOOK',1,1),
