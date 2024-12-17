@@ -54,15 +54,4 @@ insert into authorities
 select 'narmin_aliyeva',authority
 from authority_list where student=1;
 
-insert into orders
-(register_date,total_price,student_id,librarian_id)
-values
-('2024-10-11 12:13:14',202,1,1),
-('2024-10-11 12:13:14',101,2,2);
 
-insert into order_details
-(order_id,book_id,quantity)
-values
-(1,1,3),
-(1,2,7),
-(2,3,5);

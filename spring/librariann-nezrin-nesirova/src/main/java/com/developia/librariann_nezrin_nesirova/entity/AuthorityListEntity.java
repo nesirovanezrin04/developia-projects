@@ -22,7 +22,7 @@ public class AuthorityListEntity {
 
 	private String authority;
 
-	private Integer seller;
-	private Integer customer;
+	private Integer librarian;
+	private Integer student;
 
 }
