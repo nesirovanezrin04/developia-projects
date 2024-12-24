@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.developia.librariann_nezrin_nesirova.exception.MyException;
 import com.developia.librariann_nezrin_nesirova.request.LibrarianAddRequest;
+import com.developia.librariann_nezrin_nesirova.request.StudentAddRequest;
 import com.developia.librariann_nezrin_nesirova.service.UserService;
 
 import jakarta.validation.Valid;
@@ -34,5 +35,17 @@ public class UserController {
 		service.addLibrarian(req);
 		return "successfully";
 	}
+	
+	@PostMapping(path = "/student")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public String addStudent(@Valid @RequestBody StudentAddRequest req, BindingResult br) {
+		if (br.hasErrors()) {
+			throw new MyException("nese var", br);
+		}
+		service.addStudent(req);
+		return "successfully";
+	}
+
+
 
 }

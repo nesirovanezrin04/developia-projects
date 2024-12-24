@@ -72,12 +72,12 @@ public class BookController {
 
 	@PutMapping
 	@PreAuthorize(value = "hasAuthority('ROLE_UPDATE_BOOK')")
-	public ResponseEntity<Void> update(@Valid @RequestBody BookUpdateRequest req, BindingResult br) {
+	public ResponseEntity<BookResponse> update(@Valid @RequestBody BookUpdateRequest req, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new MyException("melumatlarin tamilig pozuldu", br);
 		}
 
-		return null;
+		return service.update(req);
 		// return new ResponseEntity<Integer>(id, HttpStatus.CREATED);
 	}
 

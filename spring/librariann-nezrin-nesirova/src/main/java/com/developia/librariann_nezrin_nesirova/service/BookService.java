@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.developia.librariann_nezrin_nesirova.entity.BookEntity;
@@ -14,6 +16,7 @@ import com.developia.librariann_nezrin_nesirova.exception.MyException;
 import com.developia.librariann_nezrin_nesirova.repository.BookRepository;
 import com.developia.librariann_nezrin_nesirova.repository.LibrarianRepository;
 import com.developia.librariann_nezrin_nesirova.request.BookAddRequest;
+import com.developia.librariann_nezrin_nesirova.request.BookUpdateRequest;
 import com.developia.librariann_nezrin_nesirova.response.BookListResponse;
 import com.developia.librariann_nezrin_nesirova.response.BookResponse;
 
@@ -54,6 +57,21 @@ public class BookService {
 
 	}
 	
+	public ResponseEntity<BookResponse> update(BookUpdateRequest req) {
+		BookEntity book = repository.findById(req.getId()).orElseThrow(() -> new MyException("Book not found", null));
+		book.setName(req.getName());
+		book.setPrice(req.getPrice());
+
+		repository.save(book);
+
+		BookResponse response = new BookResponse();
+		response.setId(req.getId());
+		response.setName(req.getName());
+		response.setPrice(req.getPrice());
+
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+
 	public void deleteById(Integer id) {
 		repository.deleteById(id);
 	}

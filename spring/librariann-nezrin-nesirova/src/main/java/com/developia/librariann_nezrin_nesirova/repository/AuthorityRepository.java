@@ -15,5 +15,12 @@ public interface AuthorityRepository extends JpaRepository<AuthorityEntity, Inte
 			+ "authority from authority_list where librarian=1", nativeQuery = true)
 	@Modifying
 	void addLibrarianAuthorities(String username);
+	
+	@Query(value = "insert into authorities (username,authority) select ?1,"
+			+ "authority from authority_list where student=1", nativeQuery = true)
+	@Modifying
+	void addStudentAuthorities(String username);
+
+
 
 }

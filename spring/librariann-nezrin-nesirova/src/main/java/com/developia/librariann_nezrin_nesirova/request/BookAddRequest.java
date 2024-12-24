@@ -25,9 +25,10 @@ public class BookAddRequest {
 	@Past
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	private LocalDate publishDate;
-
 	private Double price;
 
 	private String imageName;
+	
+	
 
 }

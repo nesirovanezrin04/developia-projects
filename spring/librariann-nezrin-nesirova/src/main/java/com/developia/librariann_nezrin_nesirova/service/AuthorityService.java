@@ -1,20 +1,22 @@
 package com.developia.librariann_nezrin_nesirova.service;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.developia.librariann_nezrin_nesirova.entity.AuthorityEntity;
-import jakarta.transaction.Transactional;
+import com.developia.librariann_nezrin_nesirova.repository.AuthorityRepository;
 
+@Service
+public class AuthorityService {
 
-@Transactional
-public interface AuthorityService extends JpaRepository<AuthorityEntity, Integer> {
-	/// NATIVE QUERY
+	@Autowired
+	private AuthorityRepository repository;
 
-	@Query(value = "insert into authorities (username,authority) select ?1,"
-			+ "authority from authority_list where librarian=1", nativeQuery = true)
-	@Modifying
-	void addLibrarianAuthorities(String username);
+	public void addLibrarianAuthorities(String username) {
+		repository.addLibrarianAuthorities(username);
+	}
+
+	public void addStudentAuthorities(String username) {
+		repository.addStudentAuthorities(username);
+	}
 
 }
